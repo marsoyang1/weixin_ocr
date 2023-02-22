@@ -3,7 +3,7 @@
 [![PyPi](https://img.shields.io/pypi/v/revChatGPT.svg)](https://pypi.python.org/pypi/revChatGPT)
 [![Downloads](https://static.pepy.tech/badge/revchatgpt)](https://pypi.python.org/pypi/revChatGPT)
 
-本项目封装科大讯飞接口实现微信聊天截图的识别，识别准确率高达99%，并且可以分清楚对话来自对方还是自己.
+本项目封装科大讯飞接口实现微信聊天截图文字的识别，识别准确率高达99%，并且可以分清楚对话文本来自对方还是自己.
 
 
 ## 安装准备
@@ -13,11 +13,13 @@
 ## 使用方法
 ```
 1.配置微信截图图片地址:filename = "image/5e5eb526-90e7-4915-8e00-b363f8bce2b2.jpg"
-2.`python3 -m image_ocr.py`
-3.ocr识别结果输出到result.txt
+2.python3 -m image_ocr.py
+3.ocr识别文本结果输出到result.txt
 ```
 
 ## 效果展示
+微信截图：
+
 [![微信截图](https://i.postimg.cc/gjjyvmxm/5e5eb526-90e7-4915-8e00-b363f8bce2b2.jpg)](https://postimg.cc/LgdZSdkb)
 
 识别结果：
