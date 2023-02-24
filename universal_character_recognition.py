@@ -67,7 +67,8 @@ class XunFeiSDK:
         
         response = requests.post(request_url, data=json.dumps(body), headers=headers)
         tempResult = json.loads(response.content.decode())
-
+        if tempResult.get('header').get('code') == 10110:
+            raise  AssembleHeaderException('service license not enough')
         finalResult = base64.b64decode(tempResult['payload']['result']['text']).decode()
         finalResult = finalResult.replace(" ", "").replace("\n", "").replace("\t", "").strip()
         return finalResult
