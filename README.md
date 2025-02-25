@@ -12,9 +12,8 @@
 
 ## 使用方法
 ```
-1.配置微信截图图片地址:filename = "image/5e5eb526-90e7-4915-8e00-b363f8bce2b2.jpg"
-2.python3 -m image_ocr.py
-3.ocr识别文本结果输出到result.txt
+1.python3 -m image_ocr image/example.jpg
+2.ocr识别文本结果输出到result.txt
 ```
 
 ## 效果展示
@@ -41,7 +40,7 @@
 
 # 说明
 
-这是一个私人项目，依赖于科大讯飞云提供的OCR识别接口, [`文档地址`](https://www.xfyun.cn/doc/words/universal_character_recognition/API.html "科大讯飞云") ，要大量商业使用，请自行前往科大讯飞云购买接口服务。
+这是一个私人项目，依赖于科大讯飞云提供的OCR识别接口, [`文档地址`](https://www.xfyun.cn/doc/words/universal_character_recognition/API.html "科大讯飞云") ，要大量商业使用，请自行前往科大讯飞云购买接口服务https://www.xfyun.cn/services/common-ocr。
 
 # 感谢
 
