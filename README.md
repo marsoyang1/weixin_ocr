@@ -7,7 +7,7 @@
 
 
 ## 安装准备
-`pip3 install -r requestments.txt`
+`pip3 install -r requirements.txt`
 
 
 ## 使用方法
