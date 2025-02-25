@@ -1,5 +1,7 @@
 import re
 import math
+import sys
+
 import cv2
 import json
 import numpy as np
@@ -86,7 +88,12 @@ if __name__ == '__main__':
     config = get_config_json('config.json')
 
     xun_fei = XunFeiSDK(config.get('APPId'), config.get('APISecret'), config.get('APIKey'))
-    filename = "image/5e5eb526-90e7-4915-8e00-b363f8bce2b2.jpg"
+
+    filename = "image/example.jpg"
+    if len(sys.argv) > 1:
+        filename = sys.argv[1]
+    print(f"processing file {filename} ...")
+
     #读取微信对话截图
     with open(filename, "rb") as f:
         imageBytes = f.read()
@@ -118,12 +125,12 @@ if __name__ == '__main__':
                     dialog.append(line_text)
                 continue
             # 匹配时间
-            if re.findall('.*\d:\d\d.*', words):
+            if re.findall('.*\\d:\\d\\d.*', words):
                 if line == lines[-1]:
                     dialog.append(line_text)
                 continue
             # 匹配月份
-            if re.findall('(\d{0,1})月\d{0,1}日.*', words):
+            if re.findall('(\\d{0,1})月\\d{0,1}日.*', words):
                 if line == lines[-1]:
                     dialog.append(line_text)
                 continue
