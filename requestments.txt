@@ -1,2 +1,4 @@
 numpy==1.16.5
 opencv-python==4.5.5.64
+flask==2.0.3
+pyperclip==1.8.2

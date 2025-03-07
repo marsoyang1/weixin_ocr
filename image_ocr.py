@@ -89,7 +89,7 @@ if __name__ == '__main__':
 
     xun_fei = XunFeiSDK(config.get('APPId'), config.get('APISecret'), config.get('APIKey'))
     filename = "image/5e5eb526-90e7-4915-8e00-b363f8bce2b2.jpg"
-    #读取微信对话截图
+    #读取微信对话截图.
     with open(filename, "rb") as f:
         imageBytes = f.read()
     #分割长截图
