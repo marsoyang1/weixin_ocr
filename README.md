@@ -39,6 +39,7 @@
 ## 注意
 如何额度用完或到期了，请自行购买讯飞服务，购买路径如下图：
 [![购买路径截图](https://i.postimg.cc/tJyd6VPt/1741337654058.png)](https://postimg.cc/jwgJ02ML)
+先创建创建应用，然后在找到文字识别-通用文字识别
 
 ## 联系作者反馈问题
 [![微信二维码](https://i.postimg.cc/3J0TrGtJ/4aaa650a-febf-4d70-9059-b836b4478cf6.jpg)](https://postimg.cc/Mvw4dnkh)
