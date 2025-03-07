@@ -100,6 +100,7 @@ if __name__ == '__main__':
         image = image_resize(image)
         image_info_str = xun_fei.ocr_request(image)
         if image_info_str is None:
+            print(f'失败，请排除问题后重试')
             break
         image_info_json=json.loads(image_info_str)
         lines=image_info_json['pages'][0]['lines']

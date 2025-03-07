@@ -80,7 +80,7 @@ class XunFeiSDK:
             finalResult = finalResult.replace(" ", "").replace("\n", "").replace("\t", "").strip()
             return finalResult
         except Exception as e:
-            print(f"调用讯飞ocr识别失败，错误原因：{e}")
+            print(f"Error:调用讯飞ocr识别失败，错误原因：{e}")
             return None
 
     def parse_url(self,requset_url):
