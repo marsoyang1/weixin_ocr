@@ -1,8 +1,10 @@
-import re
-import math
-import cv2
 import json
+import math
+import re
+
+import cv2
 import numpy as np
+
 from universal_character_recognition import XunFeiSDK
 
 '''
@@ -97,7 +99,8 @@ if __name__ == '__main__':
     for image in image_list:
         image = image_resize(image)
         image_info_str = xun_fei.ocr_request(image)
-        
+        if image_info_str is None:
+            break
         image_info_json=json.loads(image_info_str)
         lines=image_info_json['pages'][0]['lines']
         dialog=[]

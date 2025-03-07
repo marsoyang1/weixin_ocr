@@ -7,17 +7,18 @@
 4、在倾斜文字上效果有提升,同时支持部分生僻字的识别
 '''
 
-from datetime import datetime
-from wsgiref.handlers import format_date_time
-from time import mktime
-import hashlib
 import base64
+import hashlib
 import hmac
 import json
-import requests
+from datetime import datetime
+from time import mktime
+from urllib.parse import urlencode
+from wsgiref.handlers import format_date_time
+
 import cv2
 import numpy as np
-from urllib.parse import urlencode
+import requests
 
 
 class AssembleHeaderException(Exception):
@@ -64,14 +65,23 @@ class XunFeiSDK:
         request_url = self.assemble_ws_auth_url(url, "POST", self.APIKey, self.APISecret)
 
         headers = {'content-type': "application/json", 'host': 'api.xf-yun.com', 'app_id': self.APPId}
-        
-        response = requests.post(request_url, data=json.dumps(body), headers=headers)
-        tempResult = json.loads(response.content.decode())
-        if tempResult.get('header').get('code') == 10110:
-            raise  AssembleHeaderException('service license not enough')
-        finalResult = base64.b64decode(tempResult['payload']['result']['text']).decode()
-        finalResult = finalResult.replace(" ", "").replace("\n", "").replace("\t", "").strip()
-        return finalResult
+        try:
+            response = requests.post(request_url, data=json.dumps(body), headers=headers)
+            tempResult = json.loads(response.content.decode())
+            if tempResult.get('header').get('code') == 10110:
+                raise  AssembleHeaderException('service license not enough')
+            elif tempResult.get('header').get('code') == 11201:
+                raise  AssembleHeaderException('授权不足 1.在线服务接口报错：1.1该APPID的每日交互次数超过限制1.2 总调用量超过上限2. 离线服务接口报错：购买或供体验的装机量已用完')
+            
+            if tempResult.get('header').get('code') != 0:
+                raise AssembleHeaderException('OCR请求失败，错误代码：{},具体代码意思请参考：https://www.xfyun.cn/document/error-code'.format(tempResult.get('header').get('code')))
+            
+            finalResult = base64.b64decode(tempResult['payload']['result']['text']).decode()
+            finalResult = finalResult.replace(" ", "").replace("\n", "").replace("\t", "").strip()
+            return finalResult
+        except Exception as e:
+            print(f"调用讯飞ocr识别失败，错误原因：{e}")
+            return None
 
     def parse_url(self,requset_url):
         stidx = requset_url.index("://")
